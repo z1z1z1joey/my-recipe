@@ -1,0 +1,512 @@
+<HTML>
+<HEAD>
+  <TITLE>實作一、我的食譜.html</TITLE>
+  <meta NAME = "GENERATOR"          CONTENT = "IHMC CmapTools vr. 4.12 ">
+  <meta NAME = "KEYWORDS"           CONTENT = "陳咨諺, 概念图, cmap, CmapTools, IHMC, 實作一、我的食譜,  步驟八、 前往網址，點選更新（或快捷鍵 F5） ，就能看到修改後的畫面（圖片會顯示）,  步驟五、 在 Content 欄位，複製貼上食譜,  修改 HTML檔-index.html.erb,  步驟一、 輸入指令：rails generate scaffold post title :string photo:string content:text 按 Enter,  步驟二、 再輸入指令：rake db:migrate，按 Enter,  步驟一、 點選左邊資料夾：（你設定的名字） &#62 app &#62 views &#62 posts &#62 index.html.erb,  步驟三、 前往網址，點選更新（或按快捷鍵 F5） ，就能看到修改後的介面,  步驟四、 點 Back，會看到資料列表的介面也修改了,  步驟五、 點選右下方的網址,  修改 CSS檔,  步驟三、 輸入 Title（標題）,  步驟七、 存檔：左上角 &#62 File &#62 Save,  修改 HTML檔-show.html.erb,  步驟六、 點選 Create Post，會顯示剛輸入的資料，上方有綠字顯示新增成功,  步驟五、 將第 18 行的 &#60td&#62 換成 &#60td class="title"&#62,  步驟七、 前往網址，點選更新（或快捷鍵 F5）， 就能看到修改後的畫面（圖片會顯示）,  步驟四、 將第 3 行的 &#60p&#62 換成 &#60p class="title"&#62,  步驟三、 將 &#60strong&#62Photo:&#60/strong&#62&#60%= @post.photo %&#62 換成 &#60img src="&#60%= @post.photo %&#62"&#62&#60/img&#62,  步驟四、 點選上方綠色 Run Project,  步驟一、 啟動網頁">
+  <meta NAME = "DESCRIPTION"        CONTENT = "此概念图以 IHMC CmapTools 创建, 内含信息有关于: 實作一、我的食譜, 修改 HTML檔-show.html.erb 包括 步驟三、 將 &#60strong&#62Photo:&#60/strong&#62&#60%= @post.photo %&#62 換成 &#60img src="&#60%= @post.photo %&#62"&#62&#60/img&#62, 建立 資料樣本 包括 步驟一、 啟動網頁, 修改 HTML檔-index.html.erb 包括 步驟七、 前往網址，點選更新（或快捷鍵 F5）， 就能看到修改後的畫面（圖片會顯示）, 修改 CSS檔 包括 步驟二、 複製附檔程式碼，並貼上到 application.css 最下方, 建立 資料樣本 包括 步驟四、 在 Photo 欄位，給予一個圖片網址, 建立 資料樣本 包括 步驟二、 點選 New Post 開始新增資料, 修改 HTML檔-show.html.erb 包括 步驟二、 點選 posts &#62 show.html.erb, 修改 CSS檔 包括 步驟四、 點 Back，會看到資料列表的介面也修改了, 實作一、我的食譜 包括 修改 HTML檔-index.html.erb, 建立 資料樣本 包括 步驟六、 點選 Create Post，會顯示剛輸入的資料，上方有綠字顯示新增成功, 修改 HTML檔-show.html.erb 包括 步驟四、 將第 3 行的 &#60p&#62 換成 &#60p class="title"&#62, 建立 資料樣本 包括 步驟五、 在 Content 欄位，複製貼上食譜, 修改 HTML檔-show.html.erb 包括 步驟五、 將第 8 行 &#60p&#62 換成 &#60p class="photo"&#62, 建立 資料樣本 包括 步驟七、 按 Back 會回到之前的介面，此時已經多了一筆資料, 實作一、我的食譜 包括 修改 HTML檔-show.html.erb, 修改 HTML檔-index.html.erb 包括 步驟四、 將第 17 行的 &#60tr&#62 換成 &#60tr class="post-row"&#62, 修改 HTML檔-show.html.erb 包括 步驟七、 存檔：左上角 &#62 File &#62 Save, 建立 資料模型 包括 步驟二、 再輸入指令：rake db:migrate，按 Enter, 實作一、我的食譜 包括 建立 資料模型, 建立 資料模型 包括 步驟三、 檢查檔案 db &#62 migrate &#62 schema.rb 確定剛才輸入的資料 posts 有在裡面， 而且參數 title, photo, 與 content 都沒有錯字檢查檔案">
+  <meta NAME = "AUTHOR"             CONTENT = "IHMC CmapTools">
+  <meta HTTP-EQUIV = "Content-Type" CONTENT = "text/html; charset = UTF-8">
+  <script LANGUAGE="JavaScript1.2">
+  <!--
+    //  PopUp --
+    //  Institute for Human and Machine Cognition, http://www.ihmc.us/
+    //  CmapTools, Version 4.11, http://cmap.ihmc.us/
+    //  Modify by: CmapTools Developers, cmapsupport@ihmc.us
+    //  Date: 12/14/2006
+
+    var IE = 0;
+    var IE4PC = 0;
+    var NS = 0;
+    var GECKO = 0;
+
+    var openpopups = new Array();
+
+    if (document.all) {                 // Internet Explorer Detected
+	   IE = true;	
+    }
+    else if (document.layers) {         // Netscape Navigator Detected
+	   NS = true;	
+    }
+    else if (document.getElementById) { // Netscape 6 Detected
+       GECKO = true;
+    }
+    else {
+	   alert("Unrecognized Browser Detected::\nSorry, your browser is not compatible.");
+    }
+
+    if (IE)
+    {
+	   OS = navigator.platform;
+	   VER = new String(navigator.appVersion);
+	   VER = VER.substr (0, VER.indexOf(" "));
+	   if ((VER < 4.8) && (OS == "Win32")) 
+	   {
+	       IE4PC = 1;
+	   }
+    }
+
+    function handleResize() {
+	    location.reload();
+	    return false;
+    }
+
+
+    if ((NS) && (navigator.platform == "MacPPC")) {
+	   window.captureEvents (Event.RESIZE);
+	   window.onresize = handleResize;
+    }
+
+    function openResource(event, resourcePath, resourceName, resourceType)
+    {
+	   var newwindow;
+
+       // Resource MIMETypes are enumerated as follows: 
+       // cMap     = Undefined
+       // Image    = 0
+       // Video    = 1
+       // Text     = 2
+       // Audio    = 3
+
+       popDown();
+
+	   switch (resourceType) 
+	   {
+	    case 0:     //Image
+                    newwindow = window.open (resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+                    var text ='<center><img src=\"';
+                    text += resourcePath;
+                    text +='\"> </center>';
+             break;
+		
+	    case 1:  text   // Video
+		     newwindow = window.open (resourcePath,resourceName);
+                     newwindow.onBlur = newwindow.focus()
+                     var text ='<embed src=\"';
+                     text += resourcePath;
+                     text +='\" autostart=true> </embed> ';
+             break;
+
+	    case 2:      // Text or Unknown 
+		     newwindow = window.open(resourcePath,resourceName);
+                     newwindow.onBlur = newwindow.focus()
+              break;
+
+	    case 3:       // Audio
+                    newwindow = window.open (resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+                    var text ='<embed src=\"';
+                    text += resourcePath;
+                    text +='\" autoplay=true> </embed> ';
+             break;
+
+	    case 4:
+                    newwindow = window.open(resourcePath,resourceName);
+                    newwindow.onBlur = newwindow.focus()
+	     break;
+	    }
+        return;
+    }
+
+
+
+    function popUpEvt(event, popupName)
+    {
+	popDown();
+
+	if (GECKO)
+	{
+	    document.getElementById(popupName).style.left = event.layerX;
+	    document.getElementById(popupName).style.top = event.layerY;
+	    document.getElementById(popupName).style.background = "#B3B3B3";
+	    document.getElementById(popupName).style.visibility = "visible";
+	    openpopups.push(popupName);
+	}
+	else if (NS) 
+	{
+	    document.layers[popupName].moveTo (event.pageX, event.pageY);
+	    document.layers[popupName].bgColor = "#B3B3B3";
+	    document.layers[popupName].visibility = "show";
+	    openpopups.push(popupName);
+	}
+	else // if (IE)
+	{
+	    window.event.cancelBubble = true;
+	    if (!IE4PC) {
+		document.all[popupName].style.backgroundColor = "#B3B3B3";
+	    }	
+	    document.all[popupName].style.left = window.event.clientX + document.body.scrollLeft;
+	    document.all[popupName].style.top = window.event.clientY + document.body.scrollTop;
+	    document.all[popupName].style.visibility = "visible";
+	    openpopups[openpopups.length] = popupName;
+	}
+	return false;
+    }
+
+    function popDown()
+    {
+	var popupname;
+	
+	for (var i = 0; i < openpopups.length; i++) 
+	{
+	    popupname = new String (openpopups[i]);      
+	    if (GECKO) {
+		document.getElementById(popupname).style.visibility = "hidden";
+	    }
+	    else if (NS) {
+		document.layers[popupname].visibility = "hide";
+	    }
+	    else {
+		document.all[popupname].style.visibility = "hidden";
+	    }
+	}
+	openpopups = new Array();
+	return;
+    }
+
+    function popDownNoGecko() 
+    {
+	var popupname;
+	for (var i = 0; i < openpopups.length; i++) 
+	{
+	    popupname = new String (openpopups[i]);      
+	    if (GECKO) {
+           //  document.getElementById(popupname).style.visibility = "hidden"; 
+	        return;   // erased for test purposes
+	    }  
+	    else if (NS) {
+	        document.layers[popupname].visibility = "hide";
+	    }
+	    else {
+	        document.all[popupname].style.visibility = "hidden";
+	    }
+	}
+	openpopups = new Array();
+        return;
+    }
+  //-->
+  </script>
+</HEAD>
+<BODY bgcolor="#FFFFFF" leftmargin="0" topmargin="0">
+<noscript>
+  <table width=90% cellpadding=10>
+    <tr>
+      <td bgcolor=ff4447>
+        <font color=000000 size=+1 face="helvetica">
+        <h1>WARNING:</h1>
+        <b>JavaScript is turned OFF.  None of the links on this concept map will <br>
+           work until it is reactivated.
+          <p>
+            <a href="http://cmap.ihmc.us/docs/EnablingJavaScript.html">
+                            If you need help turning JavaScript On, click here.
+            </a>
+          </p>
+        </b>
+      </td>
+    </tr>
+  </table>
+此概念图以 IHMC CmapTools 创建, 内含信息有关于: 實作一、我的食譜, 修改 HTML檔-show.html.erb 包括 步驟三、 將 &#60strong&#62Photo:&#60/strong&#62&#60%= @post.photo %&#62 換成 &#60img src="&#60%= @post.photo %&#62"&#62&#60/img&#62, 建立 資料樣本 包括 步驟一、 啟動網頁, 修改 HTML檔-index.html.erb 包括 步驟七、 前往網址，點選更新（或快捷鍵 F5）， 就能看到修改後的畫面（圖片會顯示）, 修改 CSS檔 包括 步驟二、 複製附檔程式碼，並貼上到 application.css 最下方, 建立 資料樣本 包括 步驟四、 在 Photo 欄位，給予一個圖片網址, 建立 資料樣本 包括 步驟二、 點選 New Post 開始新增資料, 修改 HTML檔-show.html.erb 包括 步驟二、 點選 posts &#62 show.html.erb, 修改 CSS檔 包括 步驟四、 點 Back，會看到資料列表的介面也修改了, 實作一、我的食譜 包括 修改 HTML檔-index.html.erb, 建立 資料樣本 包括 步驟六、 點選 Create Post，會顯示剛輸入的資料，上方有綠字顯示新增成功, 修改 HTML檔-show.html.erb 包括 步驟四、 將第 3 行的 &#60p&#62 換成 &#60p class="title"&#62, 建立 資料樣本 包括 步驟五、 在 Content 欄位，複製貼上食譜, 修改 HTML檔-show.html.erb 包括 步驟五、 將第 8 行 &#60p&#62 換成 &#60p class="photo"&#62, 建立 資料樣本 包括 步驟七、 按 Back 會回到之前的介面，此時已經多了一筆資料, 實作一、我的食譜 包括 修改 HTML檔-show.html.erb, 修改 HTML檔-index.html.erb 包括 步驟四、 將第 17 行的 &#60tr&#62 換成 &#60tr class="post-row"&#62, 修改 HTML檔-show.html.erb 包括 步驟七、 存檔：左上角 &#62 File &#62 Save, 建立 資料模型 包括 步驟二、 再輸入指令：rake db:migrate，按 Enter, 實作一、我的食譜 包括 建立 資料模型, 建立 資料模型 包括 步驟三、 檢查檔案 db &#62 migrate &#62 schema.rb 確定剛才輸入的資料 posts 有在裡面， 而且參數 title, photo, 與 content 都沒有錯字檢查檔案
+
+</noscript>
+
+<map name="實作一、我的食譜.html">
+  <area shape="rect"
+        href="1S6VMK1C9I97TWVCI2JNIimage"
+        onClick="popUpEvt(event,'1S6VMK1C9I97TWVCI2JNIimage'); return false;"
+        coords="1656,686,1674,704">
+  <area shape="rect"
+        href="1S6VL36WFI1HZL1TJI1F1Iimage"
+        onClick="popUpEvt(event,'1S6VL36WFI1HZL1TJI1F1Iimage'); return false;"
+        coords="613,490,631,508">
+  <area shape="rect"
+        href="1S6VJX5KYI2C15T98IPCItextIhtml"
+        onClick="popUpEvt(event,'1S6VJX5KYI2C15T98IPCItextIhtml'); return false;"
+        coords="1227,199,1245,217">
+  <area shape="rect"
+        href="1S6WTSRQVIY90YB9IFG1Iimage"
+        onClick="popUpEvt(event,'1S6WTSRQVIY90YB9IFG1Iimage'); return false;"
+        coords="2182,450,2200,468">
+  <area shape="rect"
+        href="1S6VJY9M5IM7LD6RIR9ItextIhtml"
+        onClick="popUpEvt(event,'1S6VJY9M5IM7LD6RIR9ItextIhtml'); return false;"
+        coords="2188,186,2206,204">
+  <area shape="rect"
+        href="1S6VL1H7PI20SQTY0I1BYIimage"
+        onClick="popUpEvt(event,'1S6VL1H7PI20SQTY0I1BYIimage'); return false;"
+        coords="554,380,572,398">
+  <area shape="rect"
+        href="1S6VLFSNQIQSWKX8I1PZItextIhtml"
+        onClick="popUpEvt(event,'1S6VLFSNQIQSWKX8I1PZItextIhtml'); return false;"
+        coords="1667,193,1685,211">
+  <area shape="rect"
+        href="1S6VL47K5IQXDM4WI1G0Iimage"
+        onClick="popUpEvt(event,'1S6VL47K5IQXDM4WI1G0Iimage'); return false;"
+        coords="716,543,734,561">
+  <area shape="rect"
+        href="1S6VLPW62I227PLC7I209Iimage"
+        onClick="popUpEvt(event,'1S6VLPW62I227PLC7I209Iimage'); return false;"
+        coords="1222,648,1240,666">
+  <area shape="rect"
+        href="1S6VKZZNHI1PPGQYTI183Iimage"
+        onClick="popUpEvt(event,'1S6VKZZNHI1PPGQYTI183Iimage'); return false;"
+        coords="495,269,513,287">
+  <area shape="rect"
+        href="1S6VN3Q4FIHNWZQ6I3DFItextIhtml"
+        onClick="popUpEvt(event,'1S6VN3Q4FIHNWZQ6I3DFItextIhtml'); return false;"
+        coords="1229,45,1247,63">
+  <area shape="rect"
+        href="1S6VK2HZBI1XZF4QXITPItextIhtml"
+        onClick="popUpEvt(event,'1S6VK2HZBI1XZF4QXITPItextIhtml'); return false;"
+        coords="212,419,230,437">
+  <area shape="rect"
+        href="1S6VL0WSRIN6RB5SI1B1Iimage"
+        onClick="popUpEvt(event,'1S6VL0WSRIN6RB5SI1B1Iimage'); return false;"
+        coords="568,325,586,343">
+  <area shape="rect"
+        href="1S6VJVMZNI6R9FCWIG7Iimage"
+        onClick="popUpEvt(event,'1S6VJVMZNI6R9FCWIG7Iimage'); return false;"
+        coords="314,196,332,214">
+  <area shape="rect"
+        href="1S6VL4ZZMI1RGZTN0I1H2Iimage"
+        onClick="popUpEvt(event,'1S6VL4ZZMI1RGZTN0I1H2Iimage'); return false;"
+        coords="712,598,730,616">
+  <area shape="rect"
+        href="1S6VK6BQ3IR672H7IVPIimage"
+        onClick="popUpEvt(event,'1S6VK6BQ3IR672H7IVPIimage'); return false;"
+        coords="312,587,330,605">
+  <area shape="rect"
+        href="1S6VL2678I16KL0HKI1D2Iimage"
+        onClick="popUpEvt(event,'1S6VL2678I16KL0HKI1D2Iimage'); return false;"
+        coords="607,435,625,453">
+</map>
+
+<center>
+  <table width=* height=* cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td valign=center align=center>
+        <img USEMAP="#實作一、我的食譜.html"
+             SRC="實作一、我的食譜.jpg"
+             ALIGN=middle
+             BORDER=0
+             onClick=popDown();>
+      </td>
+    </tr>
+    <tr>
+      <td VALIGN=top ALIGN=right>
+        <table>
+          <tr>
+            <td ALIGN=right VALIGN=middle>
+              <map NAME="CmapToolsTrademark">
+                <area SHAPE="rect"
+                      href="http://cmap.ihmc.us/"
+                      onClick="openResource(event,'http://cmap.ihmc.us/', 0, 2); return false;"
+                      coords="1,1,210,50">
+              </map>
+            </td>
+          </tr>
+          <tr>
+            <td  ALIGN=right VALIGN=middle>
+              <img USEMAP="#CmapToolsTrademark"
+                   SRC="CmapToolsTrademark.gif" 
+                   ALT="IHMC Cmap Tools Trademark" width="210" height="50"
+                   ALIGN=middle
+                   BORDER=0>
+            </td>
+            <td VALIGN=middle>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</center>
+</BODY>
+</HTML>
+<div id="1S6VMK1C9I97TWVCI2JNIimage" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="我的食譜-美化show後.png "TITLE="">
+      我的食譜-美化show後
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VL36WFI1HZL1TJI1F1Iimage" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="我的食譜-填入食譜作法.png "TITLE="">
+      我的食譜-填入食譜作法
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VJX5KYI2C15T98IPCItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://github.com/z1z1z1joey/recipe_joey/blob/master/app/views/posts/index.html.erb "TITLE="">
+      recipe_joey-index.html.erb程式碼
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6WTSRQVIY90YB9IFG1Iimage" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="我的食譜-css美化首頁.png "TITLE="">
+      我的食譜-css美化首頁
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VJY9M5IM7LD6RIR9ItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://github.com/z1z1z1joey/recipe_joey/blob/master/app/assets/stylesheets/application.css "TITLE="">
+      recipe_joey-application.css程式碼
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VL1H7PI20SQTY0I1BYIimage" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="我的食譜-填入title.png "TITLE="">
+      我的食譜-填入title
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VLFSNQIQSWKX8I1PZItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://github.com/z1z1z1joey/recipe_joey/blob/master/app/views/posts/show.html.erb "TITLE="">
+      recipe_joey-show.html.erb程式碼
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VL47K5IQXDM4WI1G0Iimage" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="我的食譜-新增成功.png "TITLE="">
+      我的食譜-新增成功
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VLPW62I227PLC7I209Iimage" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="我的食譜-美化首頁後.png "TITLE="">
+      我的食譜-美化首頁後
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VKZZNHI1PPGQYTI183Iimage" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="我的食譜-首頁網址.png "TITLE="">
+      我的食譜-首頁網址
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VN3Q4FIHNWZQ6I3DFItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://github.com/z1z1z1joey/recipe_joey "TITLE="github程式碼">
+      專案-我的食譜（完整程式碼）
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VK2HZBI1XZF4QXITPItextIhtml" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="https://github.com/z1z1z1joey/recipe_joey/blob/master/db/schema.rb "TITLE="">
+      檢查-schema.rb程式碼
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VL0WSRIN6RB5SI1B1Iimage" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="我的食譜-New Post .png "TITLE="">
+      我的食譜-New Post 
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VJVMZNI6R9FCWIG7Iimage" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="我的食譜-資料型態.png "TITLE="">
+      我的食譜-資料型態
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VL4ZZMI1RGZTN0I1H2Iimage" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="我的食譜-返回首頁.png "TITLE="">
+      我的食譜-返回首頁
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VK6BQ3IR672H7IVPIimage" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="我的食譜-首頁網址.png "TITLE="">
+      我的食譜-首頁網址
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="1S6VL2678I16KL0HKI1D2Iimage" style="POSITION: absolute; Z-INDEX: 20; VISIBILITY: hidden; left: 0; top: 0;">
+  <table border=1 cellpadding=1 cellspacing=0 bgcolor="#dddddd">
+    <tr>
+      <td nowrap><font face="Geneva, Arial" size=2>
+      <a href="我的食譜-填入圖片網址.png "TITLE="">
+      我的食譜-填入圖片網址
+      </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
